@@ -39,3 +39,11 @@ build/
 .DS_Store
 license.key
 src/main/resources/application-prod.properties
+
+### Mars ###
+.marscode
+
+### env ###
+.env
+.env.*
+!.env.sample
