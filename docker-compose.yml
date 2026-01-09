@@ -1,0 +1,25 @@
+services:
+  # MySQL 8 服务
+  mysql:
+    image: mysql:8.0
+    container_name: mysql8_container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root  # 请替换为你的 root 密码
+      MYSQL_DATABASE: gogoscrum           # 初始创建的数据库名
+    ports:
+      - "3306:3306"
+    volumes:
+      - ~/docker/docker-volumes/mysql_data:/var/lib/mysql           # 数据持久化，防止容器删除后数据丢失
+    command: --default-authentication-plugin=mysql_native_password # 兼容旧版客户端连接
+
+  # Redis 服务
+  redis:
+    image: redis:latest
+    container_name: redis_container
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ~/docker/docker-volumes/redis_data:/data
+    command: redis-server --appendonly yes    # 开启 AOF 持久化
