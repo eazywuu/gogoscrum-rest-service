@@ -47,3 +47,6 @@ src/main/resources/application-prod.properties
 .env
 .env.*
 !.env.sample
+
+### AI ###
+.lingma
